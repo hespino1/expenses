@@ -1,0 +1,27 @@
+<%= form_for @expense do |expense| %>
+
+  <p>
+  <%= expense.label :expense_category %><br>
+  <select name="expense[category_id]">
+    <% Category.all.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+  </p>
+  <p>
+    <%= expense.label :expense_date %><br>
+    <%= expense.date_field :date%>
+  </p>
+  <p>
+    <%= expense.label :expense_amount %><br>
+    <%= expense.number_field :amount %>
+  </p>
+  <p>
+    <%= expense.label :expense_concept %><br>
+    <%= expense.text_field :concept %>
+  </p>
+ 
+  <p>
+    <%= expense.submit %>
+  </p>
+<% end %>

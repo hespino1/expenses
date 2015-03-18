@@ -1,2 +1,25 @@
-<h1>Expenses#index</h1>
-<p>Find me in app/views/expenses/index.html.erb</p>
+<h1>Expenses</h1>
+	
+<%= link_to 'New expense', new_expense_path %><br>
+<table class="table table-hover">
+   <caption></caption>
+   <thead>
+      <tr>
+         <th>Category</th>
+         <th>Date</th>
+         <th>Concept</th>
+         <th>Amount</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr><% @expenses.each do |expense| %>
+         <td><%= expense.category.name %></td>
+         <td><%= expense.date %></td>
+         <td><%= expense.concept %></td>
+         <td><%= expense.amount %>  (   <%= link_to 'Edit', edit_expense_path(expense) %>  <%= link_to "Delete", expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' } %>)</td>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
+
+
